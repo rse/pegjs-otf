@@ -110,7 +110,7 @@ Rationale
 ---------
 
 There is another Browserify transform named
-[browserify-pegjs]https://github.com/tyler-johnson/browserify-pegjs)
+[browserify-pegjs](https://github.com/tyler-johnson/browserify-pegjs)
 which transpiles `require("sample.pegjs")` calls into the actual
 on-the-fly compiled parser code. It has two drawbacks compared to
 pegjs-otf: this is fine for Browser environments, but it fails in
