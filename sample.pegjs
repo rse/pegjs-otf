@@ -1,4 +1,3 @@
-
 sample
     = _ "hello" _ who:[A-Za-z]+ _ { return who.join(""); }
 
@@ -11,4 +10,3 @@ co "comment"
 
 ws "whitespaces"
     = [ \t\r\n]+
-

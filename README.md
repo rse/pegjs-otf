@@ -17,15 +17,63 @@ This is a small wrapper class around the PEG.js API and a companion
 Browserify transform for on-the-fly (OTF) compiling PEG.js grammars into
 parser code.
 
-Getting Started
----------------
+Installation
+------------
 
 ```shell
-$ npm install pegjs-otf
+$ npm install [-g] pegjs-otf
 ```
 
+Usage
+-----
+
+With a sample grammar `sample.pegjs` like this...
+
+```
+sample
+    = _ "hello" _ who:[A-Za-z]+ _ { return who.join(""); }
+
+_ "blank"
+    = (co / ws)*
+
+co "comment"
+    = "//" (![\r\n] .)*
+    / "/*" (!"*/" .)* "*/"
+
+ws "whitespaces"
+    = [ \t\r\n]+
+```
+
+...instead of using a `sample.js` driver...
+
+```js
+var PEG = require("pegjs-otf");
+var fs = require("fs");
+var parser = PEG.buildParser(fs.readFileSync(__dirname + "/sample.pegjs", "utf8"), { optimize: "size" });
+console.log(parser.parse("hello world") === "world" ? "OK" : "FAIL");
+```
+
+...now use a `sample.js` driver like this:
+
+```js
+var PEG = require("pegjs-otf");
+var parser = PEG.buildParserFromFile(__dirname + "/sample.pegjs", { optimize: "size" });
+console.log(parser.parse("hello world") === "world" ? "OK" : "FAIL");
+```
+
+Then it will work in both Node...
+
 ```shell
-$ browserify -t pegjs-otf/transform sample.js
+$ node sample.js
+OK
+```
+
+...and the Browser (with the help of Browserify):
+
+```shell
+$ browserify -t pegjs-otf/transform -o sample.browser.js sample.js
+$ node sample.browser.js
+OK
 ```
 
 License
