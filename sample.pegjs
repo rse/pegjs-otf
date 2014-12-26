@@ -1,5 +1,5 @@
 
-model
+sample
     = _ "hello" _ who:[A-Za-z]+ _ { return who.join(""); }
 
 _ "blank"
