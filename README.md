@@ -2,7 +2,9 @@
 pegjs-otf
 =========
 
-On-The-Fly Compilation of [PEG.js](http://pegjs.org/) grammars for Node and especially for Browser.
+On-the-fly (OTF) compilation of [PEG.js](http://pegjs.org/) grammars
+into parser code in a syntactically identical way for both [Node](http://nodejs.org/) and
+Browser/[Browserify](http://browserify.org/) environments.
 
 <p/>
 <img src="https://nodei.co/npm/pegjs-otf.png?downloads=true&stars=true" alt=""/>
