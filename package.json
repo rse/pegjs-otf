@@ -5,7 +5,7 @@
     "keywords":    [ "pegjs", "browserify", "transform" ],
     "repository": {
         "type": "git",
-        "url":  "https://github.com/rse/node-pegjs-otf.git"
+        "url":  "https://github.com/rse/pegjs-otf.git"
     },
     "author": {
         "name":  "Ralf S. Engelschall",
@@ -16,8 +16,8 @@
         "type": "MIT",
         "url":  "http://opensource.org/licenses/MIT"
     }],
-    "homepage": "https://github.com/rse/node-pegjs-otf",
-    "bugs":     "https://github.com/rse/node-pegjs-otf/issues",
+    "homepage": "https://github.com/rse/pegjs-otf",
+    "bugs":     "https://github.com/rse/pegjs-otf/issues",
     "devDependencies": {
         "grunt":                "~0.4.5",
         "grunt-cli":            "~0.1.13",

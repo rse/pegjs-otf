@@ -2,7 +2,7 @@
 pegjs-otf
 =========
 
-On-The-Fly Compilation for [PEG.js](http://pegjs.org/) (for Node and especially for Browser)
+On-The-Fly Compilation of [PEG.js](http://pegjs.org/) grammars for Node and especially for Browser.
 
 <p/>
 <img src="https://nodei.co/npm/pegjs-otf.png?downloads=true&stars=true" alt=""/>
@@ -13,9 +13,9 @@ On-The-Fly Compilation for [PEG.js](http://pegjs.org/) (for Node and especially 
 About
 -----
 
-This is a small wrapper class for the PEG.js API and a companion
+This is a small wrapper class around the PEG.js API and a companion
 Browserify transform for on-the-fly (OTF) compiling PEG.js grammars into
-parsers.
+parser code.
 
 Getting Started
 ---------------
