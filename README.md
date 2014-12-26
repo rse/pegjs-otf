@@ -13,15 +13,16 @@ On-The-Fly Compilation of [PEG.js](http://pegjs.org/) grammars for Node and espe
 About
 -----
 
-This is a small wrapper class around the PEG.js API and a companion
-Browserify transform for on-the-fly (OTF) compiling PEG.js grammars into
+This is a small wrapper class around the [PEG.js](http://pegjs.org/) API and a companion
+[Browserify](http://browserify.org/) transform for on-the-fly (OTF) compiling PEG.js grammars into
 parser code.
 
 Installation
 ------------
 
 ```shell
-$ npm install [-g] pegjs-otf
+$ npm install pegjs-otf
+$ npm install browserify
 ```
 
 Usage
@@ -49,7 +50,10 @@ ws "whitespaces"
 ```js
 var PEG = require("pegjs-otf");
 var fs = require("fs");
-var parser = PEG.buildParser(fs.readFileSync(__dirname + "/sample.pegjs", "utf8"), { optimize: "size" });
+var parser = PEG.buildParser(
+    fs.readFileSync(__dirname + "/sample.pegjs", "utf8"),
+    { optimize: "size" }
+);
 console.log(parser.parse("hello world") === "world" ? "OK" : "FAIL");
 ```
 
@@ -57,24 +61,43 @@ console.log(parser.parse("hello world") === "world" ? "OK" : "FAIL");
 
 ```js
 var PEG = require("pegjs-otf");
-var parser = PEG.buildParserFromFile(__dirname + "/sample.pegjs", { optimize: "size" });
+var parser = PEG.buildParserFromFile(
+    __dirname + "/sample.pegjs",
+    { optimize: "size" }
+);
 console.log(parser.parse("hello world") === "world" ? "OK" : "FAIL");
 ```
 
-Then it will work in both Node...
+Then it will work in both Node (through on-the-fly run-time compilation)...
 
 ```shell
 $ node sample.js
 OK
 ```
 
-...and the Browser (with the help of Browserify):
+...and the Browser (with the help of Browserify through on-the-fly compile-time compilation):
 
 ```shell
 $ browserify -t pegjs-otf/transform -o sample.browser.js sample.js
 $ node sample.browser.js
 OK
 ```
+
+How It Works
+------------
+
+The API returned by `require("pegjs-otf")` is really just the PEG.js API
+with an additional method `buildParserFromFile`.
+And this `buildParserFromFile(filename, options)` is actually not really some sort of a convenience function,
+because it technically really is just `require("pegjs").buildParser(require("fs").readFileSync(filename), options)`
+and this would not warrant an extra wrapper API, of course. Instead
+the `pegjs-otf` module and its `buildParserFromFile` is actually a *marker*.
+In a regular Node environment it really just performs its
+`require("pegjs").buildParser(require("fs").readFileSync(filename), options)` operation.
+But when the application code is transpiled for Browser usage with the help
+of Browserify, then the `pegjs-otf/transform` transform kicks in and
+replaces the `require("pegjs-otf")` call with nothing and the
+`buildParserFromFile(filename, options)` call with the corresponding parser code(!).
 
 License
 -------
