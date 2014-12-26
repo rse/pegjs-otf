@@ -2,8 +2,9 @@
 pegjs-otf
 =========
 
-On-the-fly (OTF) compilation of [PEG.js](http://pegjs.org/) grammars
-into parser code in a syntactically identical way for both [Node](http://nodejs.org/) and
+This is a small wrapper class around the [PEG.js](http://pegjs.org/) API and a companion
+[Browserify](http://browserify.org/) transform for on-the-fly (OTF) compiling [PEG.js](http://pegjs.org/) grammars into
+parser code under a syntactically identical usage for both [Node](http://nodejs.org/)/NPM and
 Browser/[Browserify](http://browserify.org/) environments.
 
 <p/>
@@ -11,13 +12,6 @@ Browser/[Browserify](http://browserify.org/) environments.
 
 <p/>
 <img src="https://david-dm.org/rse/pegjs-otf.png" alt=""/>
-
-About
------
-
-This is a small wrapper class around the [PEG.js](http://pegjs.org/) API and a companion
-[Browserify](http://browserify.org/) transform for on-the-fly (OTF) compiling PEG.js grammars into
-parser code.
 
 Installation
 ------------
