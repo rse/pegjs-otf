@@ -1,14 +1,14 @@
 
-node-pegjs-otf
-==============
+pegjs-otf
+=========
 
-On-The-Fly Compilation for PEG.js (in Node and via Browserify)
-
-<p/>
-<img src="https://nodei.co/npm/node-pegjs-otf.png?downloads=true&stars=true" alt=""/>
+On-The-Fly Compilation for [PEG.js](http://pegjs.org/) (for Node and especially for Browser)
 
 <p/>
-<img src="https://david-dm.org/rse/node-pegjs-otf.png" alt=""/>
+<img src="https://nodei.co/npm/pegjs-otf.png?downloads=true&stars=true" alt=""/>
+
+<p/>
+<img src="https://david-dm.org/rse/pegjs-otf.png" alt=""/>
 
 About
 -----
@@ -21,17 +21,12 @@ Getting Started
 ---------------
 
 ```shell
-npm install pegjs-otf --save-dev
+$ npm install pegjs-otf
 ```
 
 ```shell
-browserify -t pegjs-otf/transform sample.js
+$ browserify -t pegjs-otf/transform sample.js
 ```
-
-See Also
---------
-
-- [PEG.js](http://pegjs.org/)
 
 License
 -------

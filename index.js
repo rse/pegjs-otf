@@ -1,5 +1,5 @@
 /*
-**  node-pegjs-otf -- On-The-Fly Compilation for PEG.js
+**  pegjs-otf -- On-The-Fly Compilation for PEG.js
 **  Copyright (c) 2014 Ralf S. Engelschall <rse@engelschall.com>
 **
 **  Permission is hereby granted, free of charge, to any person obtaining
