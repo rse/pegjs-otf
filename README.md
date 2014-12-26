@@ -83,21 +83,32 @@ $ node sample.browser.js
 OK
 ```
 
-How It Works
-------------
+Intention & How It Works
+------------------------
 
-The API returned by `require("pegjs-otf")` is really just the PEG.js API
-with an additional method `buildParserFromFile`.
-And this `buildParserFromFile(filename, options)` is actually not really some sort of a convenience function,
-because it technically really is just `require("pegjs").buildParser(require("fs").readFileSync(filename), options)`
-and this would not warrant an extra wrapper API, of course. Instead
-the `pegjs-otf` module and its `buildParserFromFile` is actually a *marker*.
-In a regular Node environment it really just performs its
-`require("pegjs").buildParser(require("fs").readFileSync(filename), options)` operation.
-But when the application code is transpiled for Browser usage with the help
-of Browserify, then the `pegjs-otf/transform` transform kicks in and
-replaces the `require("pegjs-otf")` call with nothing and the
-`buildParserFromFile(filename, options)` call with the corresponding parser code(!).
+The API returned by `require("pegjs-otf")` is really just the PEG.js
+API with an additional injected method `buildParserFromFile(filename,
+options)`. And this `buildParserFromFile(filename, options)`
+is actually *not* really some sort of an important
+convenience function, because it technically is just
+`require("pegjs").buildParser(require("fs").readFileSync(filename),
+options)` and this would not warrant an extra wrapper API, of course.
+Instead the `pegjs-otf` module and its distinct `buildParserFromFile`
+method is actually a *marker*.
+
+In a regular [Node](http://nodejs.org/)
+environment it really just performs its simple
+`require("pegjs").buildParser(require("fs").readFileSync(filename),
+options)` operation. But when the application code is transpiled
+for a Browser environment with the help of the excellent
+[Browserify](http://browserify.org/), then the `pegjs-otf/transform`
+transform can kick in and replaces the `var xx = require("pegjs-otf")`
+call with nothing and the `xx.buildParserFromFile(filename, options)`
+call with the corresponding on-the-fly compiled parser code.
+
+This way you need no extra build-time step for neither Node nor Browser
+environments just because of PEG.js usage. And both Node and Browser
+environments behave identically without having to alter the source.
 
 License
 -------
