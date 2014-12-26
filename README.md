@@ -106,6 +106,28 @@ This way you need no extra build-time step for neither Node nor Browser
 environments just because of PEG.js usage. And both Node and Browser
 environments behave identically without having to alter the source.
 
+Rationale
+---------
+
+There is another Browserify transform named
+[browserify-pegjs]https://github.com/tyler-johnson/browserify-pegjs)
+which transpiles `require("sample.pegjs")` calls into the actual
+on-the-fly compiled parser code. It has two drawbacks compared to
+pegjs-otf: this is fine for Browser environments, but it fails in
+regular Node environments and the only way to pass options to PEG.js'
+`buildParser` is via external Browserify options.
+
+The second of the two above drawbacks cannot be resolved. The first
+of the two above drawbacks can be circumvented with another module
+named [pegjs-require](https://github.com/dbalcomb/pegjs-require).
+Unfortunately, this has the same drawback as `browserify-pegjs`: it also
+does not allow the passing of options to the underlying `buildParser`
+method.
+
+For those reasons I've written pegjs-otf, as it supports both Node
+and Browserify environments and allows the passing of options to
+`buildParser`.
+
 License
 -------
 
