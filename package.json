@@ -27,7 +27,7 @@
     },
     "dependencies": {
         "pegjs":                "~0.8.0",
-        "lodash":               "~3.9.1",
+        "lodash":               "~3.9.3",
         "static-module":        "~1.1.2",
         "through":              "~2.3.7"
     }
