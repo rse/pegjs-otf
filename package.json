@@ -1,6 +1,6 @@
 {
     "name":        "pegjs-otf",
-    "version":     "1.0.5",
+    "version":     "1.0.6",
     "description": "On-The-Fly Compilation for PEG.js",
     "keywords":    [ "pegjs", "browserify", "transform" ],
     "repository": {
