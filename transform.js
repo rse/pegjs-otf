@@ -40,10 +40,10 @@ module.exports = function (file /*, options */) {
     if (path.extname(file) !== ".js")
         return through();
 
-    /*  act on all calls to method "buildParserFromFile" of module "pegjs-otf"  */
+    /*  act on all calls to method "generateFromFile" of module "pegjs-otf"  */
     return sm({
         "pegjs-otf": {
-            "buildParserFromFile": function (filename, options) {
+            "generateFromFile": function (filename, options) {
                 /*  read the grammar definition  */
                 var source = fs.readFileSync(filename, { encoding: "utf8" });
 
@@ -51,15 +51,15 @@ module.exports = function (file /*, options */) {
                 options.output = "source";
 
                 /*  generate the parser with regular PEG.js API  */
-                var parser = pegjs.buildParser(source, options);
+                var parser = pegjs.generate(source, options);
 
-                /*  replace the "buildParserFromFile(...)" call with the generated parser  */
+                /*  replace the "generateFromFile(...)" call with the generated parser  */
                 return "(" + parser + ")";
             }
         }
     }, {
         vars: {
-            /*  allow "__dirname" to be used in "buildParserFromFile(...)" calls  */
+            /*  allow "__dirname" to be used in "generateFromFile(...)" calls  */
             __dirname: path.dirname(file)
         }
     });

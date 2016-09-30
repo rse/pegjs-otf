@@ -46,7 +46,7 @@ ws "whitespaces"
 ```js
 var PEG = require("pegjs-otf");
 var fs = require("fs");
-var parser = PEG.buildParser(
+var parser = PEG.generate(
     fs.readFileSync(__dirname + "/sample.pegjs", "utf8"),
     { optimize: "size" }
 );
@@ -57,7 +57,7 @@ console.log(parser.parse("hello world") === "world" ? "OK" : "FAIL");
 
 ```js
 var PEG = require("pegjs-otf");
-var parser = PEG.buildParserFromFile(
+var parser = PEG.generateFromFile(
     __dirname + "/sample.pegjs",
     { optimize: "size" }
 );
@@ -83,23 +83,23 @@ Intention & How It Works
 ------------------------
 
 The API returned by `require("pegjs-otf")` is really just the PEG.js
-API with an additional injected method `buildParserFromFile(filename,
-options)`. And this `buildParserFromFile(filename, options)`
+API with an additional injected method `generateFromFile(filename,
+options)`. And this `generateFromFile(filename, options)`
 is actually *not* really some sort of an important
 convenience function, because it technically is just
-`require("pegjs").buildParser(require("fs").readFileSync(filename),
+`require("pegjs").generate(require("fs").readFileSync(filename),
 options)` and this would not warrant an extra wrapper API, of course.
-Instead the `pegjs-otf` module and its distinct `buildParserFromFile`
+Instead the `pegjs-otf` module and its distinct `generateFromFile`
 method is actually a *marker*.
 
 In a regular [Node](http://nodejs.org/)
 environment it really just performs its simple
-`require("pegjs").buildParser(require("fs").readFileSync(filename),
+`require("pegjs").generate(require("fs").readFileSync(filename),
 options)` operation. But when the application code is transpiled
 for a Browser environment with the help of the excellent
 [Browserify](http://browserify.org/), then the `pegjs-otf/transform`
 transform can kick in and replaces the `var xx = require("pegjs-otf")`
-call with nothing and the `xx.buildParserFromFile(filename, options)`
+call with nothing and the `xx.generateFromFile(filename, options)`
 call with the corresponding on-the-fly compiled parser code.
 
 This way you need no extra build-time step for neither Node nor Browser
@@ -115,18 +115,18 @@ which transpiles `require("sample.pegjs")` calls into the actual
 on-the-fly compiled parser code. It has two drawbacks compared to
 pegjs-otf: this is fine for Browser environments, but it fails in
 regular Node environments and the only way to pass options to PEG.js'
-`buildParser` is via external Browserify options.
+`generate` is via external Browserify options.
 
 The second of the two above drawbacks cannot be resolved. The first
 of the two above drawbacks can be circumvented with another module
 named [pegjs-require](https://github.com/dbalcomb/pegjs-require).
 Unfortunately, this has the same drawback as `browserify-pegjs`: it also
-does not allow the passing of options to the underlying `buildParser`
+does not allow the passing of options to the underlying `generate`
 method.
 
 For those reasons I've written pegjs-otf, as it supports both Node
 and Browserify environments and allows the passing of options to
-`buildParser`.
+`generate`.
 
 License
 -------

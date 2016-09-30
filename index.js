@@ -34,11 +34,11 @@ var pegjs   = require("pegjs");
 
 /*  provide a minimum wrapper class around PEG.js API  */
 module.exports = _.extend({
-	/*  provide an additional method which is like "buildParser",
+	/*  provide an additional method which is like "generate",
 	    but gets a grammar filename instead of the grammar text  */
-    buildParserFromFile: function (filename, options) {
+    generateFromFile: function (filename, options) {
         var source = fs.readFileSync(filename, { encoding: "utf8" });
-        return pegjs.buildParser(source, options);
+        return pegjs.generate(source, options);
     }
 }, pegjs);
 
