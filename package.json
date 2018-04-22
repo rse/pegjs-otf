@@ -28,7 +28,7 @@
     "dependencies": {
         "pegjs":                "0.10.0",
         "lodash":               "4.17.5",
-        "static-module":        "2.2.2",
+        "static-module":        "2.2.4",
         "through":              "2.3.8"
     }
 }
