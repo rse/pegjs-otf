@@ -19,16 +19,16 @@
     "homepage": "https://github.com/rse/pegjs-otf",
     "bugs":     "https://github.com/rse/pegjs-otf/issues",
     "devDependencies": {
-        "grunt":                "1.0.2",
+        "grunt":                "1.0.3",
         "grunt-cli":            "1.2.0",
         "grunt-contrib-jshint": "1.1.0",
         "grunt-contrib-clean":  "1.1.0",
-        "grunt-eslint":         "20.1.0"
+        "grunt-eslint":         "20.2.0"
     },
     "dependencies": {
         "pegjs":                "0.10.0",
         "lodash":               "4.17.10",
-        "static-module":        "2.2.5",
+        "static-module":        "3.0.0",
         "through":              "2.3.8"
     }
 }
