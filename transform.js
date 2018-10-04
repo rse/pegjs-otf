@@ -36,8 +36,8 @@ var through = require("through");
 
 /*  Browserify transform  */
 module.exports = function (file /*, options */) {
-    /*  act on JavaScript files only  */
-    if (path.extname(file) !== ".js")
+    /*  act on JavaScript and TypeScript files only  */
+    if (path.extname(file) !== ".js" && path.extname(file) !== ".ts")
         return through();
 
     /*  act on all calls to method "generateFromFile" of module "pegjs-otf"  */
