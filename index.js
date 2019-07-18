@@ -29,11 +29,11 @@
 var fs      = require("fs");
 
 /*  external requirements  */
-var _       = require("lodash");
+var extend       = require("lodash.assignin");
 var pegjs   = require("pegjs");
 
 /*  provide a minimum wrapper class around PEG.js API  */
-module.exports = _.extend({
+module.exports = extend({
 	/*  provide an additional method which is like "generate",
 	    but gets a grammar filename instead of the grammar text  */
     generateFromFile: function (filename, options) {
