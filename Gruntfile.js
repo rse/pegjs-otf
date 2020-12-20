@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                 jshintrc: "jshint.json"
             },
             "gruntfile": [ "Gruntfile.js" ],
-            "prince":    [ "index.js", "transform.js" ]
+            "pegjs-otf": [ "index.js", "transform.js" ]
         },
         eslint: {
             options: {
