@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         },
         eslint: {
             options: {
-                configFile: "eslint.json"
+                overrideConfigFile: "eslint.json"
             },
             target: [ "index.js", "transform.js" ]
         },
