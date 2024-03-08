@@ -2,7 +2,7 @@
     "name":        "pegjs-otf",
     "version":     "2.0.1",
     "description": "On-The-Fly Compilation for PEG.js",
-    "keywords":    [ "pegjs", "browserify", "transform" ],
+    "keywords":    [ "pegjs", "peggy", "browserify", "transform" ],
     "repository": {
         "type": "git",
         "url":  "git+https://github.com/rse/pegjs-otf.git"

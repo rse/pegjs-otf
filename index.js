@@ -30,7 +30,7 @@ var fs      = require("fs");
 
 /*  external requirements  */
 var _       = require("lodash");
-var pegjs   = require("pegjs");
+var peggy   = require("peggy");
 
 /*  provide a minimum wrapper class around PEG.js API  */
 module.exports = _.extend({
@@ -38,7 +38,7 @@ module.exports = _.extend({
 	    but gets a grammar filename instead of the grammar text  */
     generateFromFile: function (filename, options) {
         var source = fs.readFileSync(filename, { encoding: "utf8" });
-        return pegjs.generate(source, options);
+        return peggy.generate(source, options);
     }
-}, pegjs);
+}, peggy);
 

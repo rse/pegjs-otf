@@ -30,7 +30,7 @@ var fs      = require("fs");
 var path    = require("path");
 
 /*  external requirements  */
-var pegjs   = require("pegjs");
+var peggy   = require("peggy");
 var sm      = require("static-module");
 var through = require("through");
 
@@ -51,7 +51,7 @@ module.exports = function (file /*, options */) {
                 options.output = "source";
 
                 /*  generate the parser with regular PEG.js API  */
-                var parser = pegjs.generate(source, options);
+                var parser = peggy.generate(source, options);
 
                 /*  replace the "generateFromFile(...)" call with the generated parser  */
                 return "(" + parser + ")";
