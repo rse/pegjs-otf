@@ -5,7 +5,7 @@
     "keywords":    [ "pegjs", "browserify", "transform" ],
     "repository": {
         "type": "git",
-        "url":  "https://github.com/rse/pegjs-otf.git"
+        "url":  "git+https://github.com/rse/pegjs-otf.git"
     },
     "author": {
         "name":  "Dr. Ralf S. Engelschall",
