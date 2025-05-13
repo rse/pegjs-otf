@@ -17,13 +17,13 @@
     "bugs":     "https://github.com/rse/pegjs-otf/issues",
     "devDependencies": {
         "grunt":                "1.6.1",
-        "grunt-cli":            "1.4.3",
+        "grunt-cli":            "1.5.0",
         "grunt-contrib-jshint": "3.2.0",
         "grunt-contrib-clean":  "2.0.1",
         "grunt-eslint":         "24.3.0"
     },
     "dependencies": {
-        "peggy":                "4.0.2",
+        "peggy":                "5.0.2",
         "lodash":               "4.17.21",
         "static-module":        "3.0.4",
         "through":              "2.3.8"
