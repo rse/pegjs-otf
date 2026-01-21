@@ -24,7 +24,7 @@
     },
     "dependencies": {
         "peggy":                "5.0.2",
-        "lodash":               "4.17.21",
+        "lodash":               "4.17.23",
         "static-module":        "3.0.4",
         "through":              "2.3.8"
     }
